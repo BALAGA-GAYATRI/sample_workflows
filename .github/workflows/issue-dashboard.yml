@@ -39,11 +39,11 @@ jobs:
             - type: 'number'
               title: 'aci-deploy'
               issue_query: 'repo:Azure/aci-deploy is:open is:issue created:>{{ date("-365 days") }}'
-              color:'green'
+              color: 'green'
             - type: 'number'
               title: 'functions-action'
               issue_query: 'repo:Azure/functions-action is:open is:issue created:>{{ date("-365 days") }}'
-              color:'green'
+              color: 'green'
             - type: number
               script: |
                 const repo1 = 'Azure/login'
