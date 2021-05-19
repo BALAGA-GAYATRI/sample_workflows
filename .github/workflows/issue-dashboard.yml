@@ -50,9 +50,10 @@ jobs:
                 const repo2 = 'Azure/webapps-deploy' 
                 const repo3 = 'Azure/aci-deploy'
                 const repo4 = 'functions-action' 
-                const results = await github.search.issuesAndPullRequests({ 
-                q: `repo:${repo1} is:pr is:open created:<${date('-1 day')}`, 
-                }) 
+                const results = await github.search.issuesAndPullRequests(
+                { q: `repo:${repo1} is:pr is:open created:<${date('-365 day')}`},
+                { q: `repo:${repo1} is:pr is:open created:<${date('-365 day')}`}
+                ) 
                 const count = results.data.total_count 
                 const title = 'total issues' 
                 const color = (count > 10) ? 'red' : 'green' 
