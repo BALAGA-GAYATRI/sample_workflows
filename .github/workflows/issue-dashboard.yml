@@ -63,31 +63,31 @@ jobs:
                 return { value: count, title: title, color: color }
         token: ${{ github.token }}
     
-    - name: Commit files
-      id: commit
-      run: |
-        git config --local user.email "balaga-gayatri@github.com"
-        git config --local user.name "balaga-gayatri"
-        git add --all
-        if [-z "$(git status --porcelain)"]; then
-           echo "::set-output name=push::false"
-        else
-           git commit -m "Add changes" -a
-           echo "::set-output name=push::true"
-        fi
-      shell: bash
- 
-    - name: Push changes
-      if: steps.commit.outputs.push == 'true'
-      uses: ad-m/github-push-action@master
-      with:
-         github_token: ${{ secrets.GITHUB_TOKEN }}
-#     - name: Publish Documentation
+#     - name: Commit files
+#       id: commit
 #       run: |
-#         git add .
-#         git config user.name 'balaga-gayatri'
-#         git config user.email 'balaga-gayatri'
-#         git commit -m 'Documentation update' --allow-empty
-#         git push origin gh-pages
-#       working-directory: out
+#         git config --local user.email "balaga-gayatri@github.com"
+#         git config --local user.name "balaga-gayatri"
+#         git add --all
+#         if [-z "$(git status --porcelain)"]; then
+#            echo "::set-output name=push::false"
+#         else
+#            git commit -m "Add changes" -a
+#            echo "::set-output name=push::true"
+#         fi
+#       shell: bash
+ 
+#     - name: Push changes
+#       if: steps.commit.outputs.push == 'true'
+#       uses: ad-m/github-push-action@master
+#       with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Publish Documentation
+      run: |
+        git add .
+        git config user.name 'balaga-gayatri'
+        git config user.email 'balaga-gayatri'
+        git commit -m 'Documentation update' --allow-empty
+        git push origin gh-pages
+      working-directory: out
 
