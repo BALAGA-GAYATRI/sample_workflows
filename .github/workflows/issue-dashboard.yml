@@ -26,11 +26,41 @@ jobs:
             format: markdown
             filename: 'dashboard.md'
           sections:
-          - title: 'Pull Requests'
+          - title: 'issues'
             widgets:
             - type: 'number'
-              title: 'ligbit'
-              issue_query: 'repo:libgit2/libgit2 repo:Azure/login is:open is:issue created:>{{ date("-365 days") }}'
+              title: 'az login'
+              issue_query: 'repo:Azure/login is:open is:issue created:>{{ date("-365 days") }}'
+              color: 'green'
+            - type: 'number'
+              title: 'webapps-deploy'
+              issue_query: 'repo:Azure/webapps-deploy is:open is:issue created:>{{ date("-365 days") }}'
+              color: 'green'
+            - type: 'number'
+              title: 'aci-deploy'
+              issue_query: 'repo:Azure/aci-deploy is:open is:issue created:>{{ date("-365 days") }}'
+              color:'green'
+            - type: 'number'
+              title: 'functions-action'
+              issue_query: 'repo:Azure/functions-action is:open is:issue created:>{{ date("-365 days") }}'
+              color:'green'
+            - type: number
+              script: |
+                const repo1 = 'Azure/login'
+                const repo2 = 'Azure/webapps-deploy'
+                const repo3 = 'Azure/aci-deploy'
+                const repo4 = 'functions-action'
+                const results = await github.search.issuesAndPullRequests({
+                  q: `repo:${repo1} is:pr is:open created:<${date('-1 day')}`,
+                  q: `repo:${repo2} is:pr is:open created:<${date('-1 day')}`,
+                  q: `repo:${repo3} is:pr is:open created:<${date('-1 day')}`,
+                  q: `repo:${repo4} is:pr is:open created:<${date('-1 day')}`
+                  
+                })
+                const count = results.data.total_count
+                const title = 'total issues'
+                const color = (count > 10) ? 'red' : 'green'
+                return { value: count, title: title, color: color }
         token: ${{ github.token }}
 
     - name: Commit files
