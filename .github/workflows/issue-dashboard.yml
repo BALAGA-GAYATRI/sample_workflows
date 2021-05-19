@@ -44,6 +44,18 @@ jobs:
               title: 'functions-action'
               issue_query: 'repo:Azure/functions-action is:open is:issue created:>{{ date("-365 days") }}'
               color: 'green'
+            - type: number 
+              script: | 
+                const repo1 = 'Azure/login' 
+                const repo2 = 'Azure/webapps-deploy' 
+                const repo3 = 'Azure/aci-deploy'
+                const repo4 = 'functions-action' 
+                const results = await github.search.issuesAndPullRequests({ 
+                q: `repo:${repo1} is:pr is:open created:<${date('-1 day')}`, 
+                }) 
+                const count = results.data.total_count const title = 'total issues' 
+                const color = (count > 10) ? 'red' : 'green' 
+                return { value: count, title: title, color: color }
         token: ${{ github.token }}
 
     - name: Commit files
@@ -65,3 +77,6 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
          github_token: ${{ secrets.GITHUB_TOKEN }}
+#  q: `repo:${repo2} is:pr is:open created:<${date('-1 day')}`,
+#                 q: `repo:${repo3} is:pr is:open created:<${date('-1 day')}`,
+#                 q: `repo:${repo4} is:pr is:open created:<${date('-1 day')}`
