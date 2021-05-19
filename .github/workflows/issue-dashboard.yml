@@ -15,7 +15,11 @@ jobs:
     steps:
     - name: Check out repository
       uses: actions/checkout@v2
-
+    - name: Check out GitHub Pages branch
+      uses: actions/checkout@v2
+      with:
+        ref: 'gh-pages'
+        path: 'out'
     - name: 'Generate Dashboard'
       id: dashboard
       uses: ethomson/issue-dashboard@v1
@@ -78,4 +82,12 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
          github_token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Publish Documentation
+      run: |
+        git add .
+        git config user.name 'balaga-gayatri'
+        git config user.email 'balaga-gayatri'
+        git commit -m 'Documentation update' --allow-empty
+        git push origin gh-pages
+      working-directory: out
 
