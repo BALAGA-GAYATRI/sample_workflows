@@ -23,8 +23,8 @@ jobs:
         config: |
           title: 'Dashboard'
           output:
-            format: markdown
-            filename: 'dashboard.md'
+            format: html
+            filename: 'dashboard.html'
           sections:
           - title: 'issues'
             widgets:
