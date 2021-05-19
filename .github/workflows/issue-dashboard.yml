@@ -49,7 +49,7 @@ jobs:
                 const repo1 = 'Azure/login' 
                 const repo2 = 'Azure/webapps-deploy' 
                 const repo3 = 'Azure/aci-deploy'
-                const repo4 = 'functions-action' 
+                const repo4 = 'Azure/functions-action' 
                 const results = await github.search.issuesAndPullRequests(
                 { q: `repo:${repo1} repo:${repo2} repo:${repo3} repo:${repo4} is:pr is:open created:<${date('-365 day')}`}
                 ) 
