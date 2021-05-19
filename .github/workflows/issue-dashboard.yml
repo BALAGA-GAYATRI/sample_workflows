@@ -78,6 +78,4 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
          github_token: ${{ secrets.GITHUB_TOKEN }}
-#  q: `repo:${repo2} is:pr is:open created:<${date('-1 day')}`,
-#                 q: `repo:${repo3} is:pr is:open created:<${date('-1 day')}`,
-#                 q: `repo:${repo4} is:pr is:open created:<${date('-1 day')}`
+
