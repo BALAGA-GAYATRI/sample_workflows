@@ -23,7 +23,7 @@ jobs:
         config: |
           title: 'Dashboard'
           output:
-            format: html
+            format: markdown
             filename: 'dashboard.html'
           sections:
           - title: 'Pull Requests'
