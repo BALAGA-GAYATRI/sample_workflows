@@ -1,6 +1,6 @@
 [
 	{
-	repoName: login,
+		repoName: login,
 		readmeChecks: Yes,
 		codeOwnerCheck: unknown,
 		nodeModulesCheck: unknown,
