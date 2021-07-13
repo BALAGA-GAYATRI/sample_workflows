@@ -10,6 +10,7 @@ jobs:
     - name: validating action repos
       id: checks_validation
       uses: BALAGA-GAYATRI/action-repo-validation@releases/3
+      continue-on-error: true
       with:
         GITHUB_TOKEN: ${{ secrets.PAT_Token }}
         repositories: 'login,webapps-deploy'
