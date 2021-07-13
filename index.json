@@ -1,1 +1,24 @@
-[{repoName:login,readmeChecks:Yes,codeOwnerCheck:unknown,nodeModulesCheck:unknown,branchPermissionCheck:unknown,releasesNodeModulesCheck:unknown,vulnerabilityBotCheck:unknown,issueTemplateCheck:unknown,standardLabelsCheck:unknown},{repoName:webapps-deploy,readmeChecks:Yes,codeOwnerCheck:unknown,nodeModulesCheck:unknown,branchPermissionCheck:unknown,releasesNodeModulesCheck:unknown,vulnerabilityBotCheck:unknown,issueTemplateCheck:unknown,standardLabelsCheck:unknown}]
+[
+	{
+		repoName: login,
+		readmeChecks: Yes,
+		codeOwnerCheck: unknown,
+		nodeModulesCheck: unknown,
+		branchPermissionCheck: unknown,
+		releasesNodeModulesCheck: unknown,
+		vulnerabilityBotCheck: unknown,
+		issueTemplateCheck: unknown,
+		standardLabelsCheck: unknown
+	},
+	{
+		repoName: webapps-deploy,
+		readmeChecks: Yes,
+		codeOwnerCheck: unknown,
+		nodeModulesCheck: unknown,
+		branchPermissionCheck: unknown,
+		releasesNodeModulesCheck: unknown,
+		vulnerabilityBotCheck: unknown,
+		issueTemplateCheck: unknown,
+		standardLabelsCheck: unknown
+	}
+]
