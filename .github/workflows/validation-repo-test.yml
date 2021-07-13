@@ -11,4 +11,4 @@ jobs:
       uses: BALAGA-GAYATRI/action-repo-validation@releases/3
       with:
         GITHUB_TOKEN: ${{ secrets.PAT_Token }}
-        repositories: 'sql-action, functions-action'
+        repositories: 'sql-action,functions-action'
