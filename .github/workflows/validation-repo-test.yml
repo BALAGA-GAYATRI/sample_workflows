@@ -14,4 +14,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.PAT_Token }}
         repositories: 'login,webapps-deploy'
     - name: validation result
-      run: echo ${{steps.checks_validation.outputs.validationResult}}
+      run: |
+        pwd
+        echo ${{steps.checks_validation.outputs.validationResult}}
