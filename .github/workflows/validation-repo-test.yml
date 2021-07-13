@@ -1,0 +1,14 @@
+name: "build"
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+#     - uses: actions/checkout@v1
+    - name: Testing action
+      uses: BALAGA-GAYATRI/action-repo-validation@release1
+      with:
+        GITHUB_TOKEN: ${{ secrets.PAT_Token }}
+        repositories: 'login,webapps-deploy'
