@@ -17,4 +17,4 @@ jobs:
     - name: validation result
       run: |
         pwd
-        echo ${{steps.checks_validation.outputs.validationResult}}
+        echo ${{steps.checks_validation.outputs.validationResult}} | python -mjson.tool
