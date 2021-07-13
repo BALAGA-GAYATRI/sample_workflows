@@ -16,4 +16,4 @@ jobs:
         repositories: 'login,webapps-deploy'
     - name: validation result
       run: |
-        echo ${{steps.checks_validation.outputs.validationResult}} 
+        echo "${{steps.checks_validation.outputs.validationResult}}" 
