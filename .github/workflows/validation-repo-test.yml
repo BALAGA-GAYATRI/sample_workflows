@@ -16,8 +16,7 @@ jobs:
         repositories: 'login,webapps-deploy'
     - name: validation result
       run: |
-           echo "${{steps.checks_validation.outputs.validationResult}}" 
-           cat "${{steps.checks_validation.outputs.validationResult}}" > index.json
+           echo "${{steps.checks_validation.outputs.validationResult}}" > index.json
            git config --local user.email "balaga-gayatri@github.com"
            git config --local user.name "balaga-gayatri"
            git pull
