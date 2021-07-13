@@ -7,8 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 #     - uses: actions/checkout@v1
-    - name: Testing action
+    - name: validating action repos
+      id: checks_validation
       uses: BALAGA-GAYATRI/action-repo-validation@releases/3
       with:
         GITHUB_TOKEN: ${{ secrets.PAT_Token }}
         repositories: 'login,webapps-deploy'
+    - name: validation result
+      run: echo ${{steps.checks_validation.outputs.validationResult}}
