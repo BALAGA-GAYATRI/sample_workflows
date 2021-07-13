@@ -8,7 +8,7 @@ jobs:
     steps:
 #     - uses: actions/checkout@v1
     - name: Testing action
-      uses: BALAGA-GAYATRI/action-repo-validation@release1
+      uses: BALAGA-GAYATRI/action-repo-validation@releases/3
       with:
         GITHUB_TOKEN: ${{ secrets.PAT_Token }}
         repositories: 'login,webapps-deploy'
