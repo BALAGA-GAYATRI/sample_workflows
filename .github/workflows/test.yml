@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: replace secrets in yaml config
-        uses: microsoft/variable-substitution@v1
+        uses: microsoft/users/balaga-gayatri/bug-fix
         with:
           files: 'test.yml'
         env:
