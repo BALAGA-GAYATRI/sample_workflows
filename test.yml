@@ -1,3 +1,3 @@
 foo:
   bar:
-    test: {{{ <div> some html context in yaml file </div> }}}
+    - test: <div> some html context in yaml file </div>
