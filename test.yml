@@ -1,3 +1,3 @@
 foo:
   bar:
-     test : "hi"
+     test : "<div>some html context in yaml file</div>"
