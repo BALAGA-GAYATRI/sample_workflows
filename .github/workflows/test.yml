@@ -1,0 +1,19 @@
+name: 'Test Workflow'
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: replace secrets in yaml config
+        uses: microsoft/variable-substitution@v1
+        with:
+          files: 'test.yml'
+        env:
+          foo.bar.test: ${{ secrets.ATESTSTRING }}
