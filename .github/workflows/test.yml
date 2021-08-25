@@ -14,4 +14,4 @@ jobs:
         with:
           files: 'testxml.xml'
         env:
-          author: 'Gayatri'
+          contact-info.name: 'Gayatri'
