@@ -14,4 +14,4 @@ jobs:
         with:
           files: 'testxml.xml'
         env:
-          foo.bar.test: ${{ secrets.ATESTSTRING }}
+          author: 'Gayatri'
