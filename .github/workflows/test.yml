@@ -12,6 +12,6 @@ jobs:
       - name: replace secrets in yaml config
         uses: microsoft/variable-substitution@users/balaga-gayatri/bug-fix
         with:
-          files: 'test.yml'
+          files: 'testxml.xml'
         env:
           foo.bar.test: ${{ secrets.ATESTSTRING }}
