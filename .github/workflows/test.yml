@@ -10,8 +10,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: replace secrets in yaml config
-        uses: microsoft/variable-substitution@users/balaga-gayatri/bug-fix
+        uses: microsoft/variable-substitution@v1
         with:
-          files: 'testxml.xml'
+          files: 'test.yml'
         env:
-          applicationSettings: "Gayatri"
+          foo.bar.test: 'gayatri'
