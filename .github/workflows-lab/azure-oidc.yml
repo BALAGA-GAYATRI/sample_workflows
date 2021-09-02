@@ -1,0 +1,49 @@
+name: Azure access resource
+
+# Controls when the workflow will run 
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get ID Token
+      id: idtoken
+      uses: souravchanduka/id-token-action-no-ngrok@1.0.6
+      with:
+       audience: 'api://AzureADTokenExchange'     # Audience field is optional. By default, the value is the repo's url. In order to fetch ID token for a different audience, that audience must be present in the Github action's allowed audience list.
+    - name: print ID Token
+      run: |
+          echo "The ID Token is ${{ steps.idtoken.outputs.id_token }}"  
+          jwtd() {
+            if [[ -x $(command -v jq) ]]; then
+                 jq -R 'split(".") | .[0],.[1] | @base64d | fromjson' <<< "${1}"
+                 echo "Signature: $(echo "${1}" | awk -F'.' '{print $3}')"
+            fi
+          }
+          jwtd ${{ steps.idtoken.outputs.id_token }}
+    - name: get Access Token
+      run: |
+        big_json=$(curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=7ea917fd-1d31-4e67-88d7-a001f7cd93f9&scope=https://graph.microsoft.com/.default&client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer&client_assertion=${{steps.idtoken.outputs.id_token}}&grant_type=client_credentials' 'https://login.microsoftonline.com/55d2ac9d-9289-4a54-9cc7-47222a96a7fa/oauth2/v2.0/token?dc=ESTS-PUB-WUS2-AZ1-FD000-TEST1')
+        big_json="${big_json//'%'/'%25'}"
+        big_json="${big_json//$'\n'/'%0A'}"
+        big_json="${big_json//$'\r'/'%0D'}"
+        echo "::set-output name=big_json::$big_json"
+        echo $big_json
+      id: accessToken
+
+    - name: Graph Api Call using Access Token
+      run: |
+        big_json=$(curl -X GET -H "Authorization: Bearer ${{fromJson(steps.accessToken.outputs.big_json).access_token}}" -H "Content-Type: application/json" https://graph.microsoft.com/v1.0/users/adfadadb-5d97-4fbd-aad3-0f097138f199/identities)
+        big_json="${big_json//'%'/'%25'}"
+        big_json="${big_json//$'\n'/'%0A'}"
+        big_json="${big_json//$'\r'/'%0D'}"
+        echo "::set-output name=big_json::$big_json"
+        echo $big_json
+          
